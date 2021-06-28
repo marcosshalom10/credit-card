@@ -1,0 +1,309 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #DDEEFC;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    padding: 40px 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ----- ESTILOS GENERALES DE LA TARJETA ----- */
+
+.tarjeta {
+    width: 100%;
+    max-width: 550px;
+    position: relative;
+    color: #FFFFFF;
+    transition: 0.3s ease all;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    z-index: 2;
+
+    &.active {
+        transform: rotateY(180deg);
+    }
+
+    >div {
+        padding: 30px;
+        border-radius: 15px;
+        min-height: 315px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 10px 10px 0 rgba($color: rgb(90, 116, 148), $alpha: 0.3);
+    }
+
+    .delantera {
+        width: 100%;
+        background: url('../img/bg-tarjeta.jpg');
+        background-size: cover;
+        backface-visibility: hidden;
+    }
+}
+
+/* ----- TARJETA DELANTERA ----- */
+
+.delantera {
+    .logo-marca {
+        text-align: right;
+        min-height: 50px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-width: 80px;
+        }
+    }
+
+    .chip {
+        width: 100%;
+        max-width: 50px;
+        margin-bottom: 20px;
+    }
+
+    .grupo {
+        .label {
+            font-size: 16px;
+            color: #7D8994;
+            margin-bottom: 5px;
+        }
+
+        .numero, .nombre, .expiracion {
+            color: #FFFFFF;
+            font-size: 22px;
+            text-transform: uppercase;
+        }
+    }
+
+    .flexbox {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+}
+
+/* ----- TARJETA TRASERA ----- */
+
+.trasera {
+    width: 100%;
+    background: url('../img/bg-tarjeta.jpg');
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+
+    .barra-magnetica {
+        height: 40px;
+        background: #000000;
+        width: 100%;
+        position: absolute;
+        top: 30px;
+        left: 0;
+    }
+
+    .datos {
+        margin-top: 60px;
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        #firma {
+            width: 70%;
+
+            .firma {
+                height: 40px;
+                background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+
+                p {
+                    line-height: 40px;
+                    font-family: 'Pacifico', cursive;
+                    color: #000000;
+                    font-size: 30px;
+                    padding: 0 10px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        #ccv {
+            width: 20%;
+
+            .ccv {
+                background: #FFFFFF;
+                height: 40px;
+                color: #000000;
+                padding: 10px;
+                text-align: center;
+            }
+        }
+    }
+
+    .leyenda {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .link-banco {
+        font-size: 14px;
+        color: #FFFFFF;
+    }
+}
+
+/* ----- CONTENEDOR BOTÓN ----- */
+
+.contenedor-btn {
+    .btn-abrir-formulario {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        line-height: 20px;
+        background: #2364D2;
+        color: #FFFFFF;
+        position: relative;
+        top: -25px;
+        z-index: 3;
+        border-radius: 100%;
+        box-shadow: -5px 4px 8px rgba($color: rgb(24, 56, 182), $alpha: 0.4);
+        padding: 5px;
+        transition: all 0.2 ease;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background: #1850B1;
+        }
+
+        &.active {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+/* ----- FORMULARIO TARJETA ----- */
+
+.formulario-tarjeta {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 700px;
+    padding: 150px 30px 30px 30px;
+    border-radius: 10px;
+    position: relative;
+    top: -150px;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.3s ease-out;
+
+    &.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    label {
+        display: block;
+        color: #7D8994;
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    input, select {
+        border: 2px solid #CED6E0;
+        font-size: 18px;
+        height: 50px;
+        width: 100%;
+        padding: 5px 12px;
+        transition: .3s ease all;
+        border-radius: 5px;
+
+        &:hover {
+            border: 2px solid #93BDED;
+        }
+
+        &:focus {
+            outline: rgb(4, 4, 4);
+            box-shadow: 1px 7px 10px -5px rgba($color: rgb(90, 116, 148), $alpha: 0.3);
+        }
+    }
+
+    input {
+        margin-bottom: 20PX;
+        text-transform: uppercase;
+    }
+
+    .flexbox {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .expira {
+        width: 100%;
+    }
+
+    .ccv {
+        width: 100px;
+    }
+
+    .grupo-select {
+        width: 100%;
+        margin-right: 15px;
+        position: relative;
+
+        i {
+            position: absolute;
+            color: #CED6E0;
+            top: 18px;
+            right: 15px;
+            transition: .3s ease all;
+        }
+
+        &:hover {
+            i {
+                color: #93BFED;
+            }
+        }
+    }
+
+    select {
+        -webkit-appearance: none;
+    }
+
+    .btn-enviar {
+        border: none;
+        padding: 10px;
+        font-size: 22px;
+        color: #FFFFFF;
+        background: #2364D2;
+        box-shadow: 2px 2px 10px 0 rgba($color: rgb(0, 85, 212), $alpha: 0.4);
+        cursor: pointer;
+
+        &:hover {
+            background: #1850B1;
+        }
+    }
+}
+
+.btn-enviar {
+    border: 2px solid #CED6E0;
+    font-size: 18px;
+    height: 50px;
+    width: 100%;
+    padding: 5px 12px;
+    transition: .3s ease all;
+    border-radius: 5px;
+}
